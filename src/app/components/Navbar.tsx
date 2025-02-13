@@ -1,11 +1,12 @@
 'use client'
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { ShoppingCart, Menu, X, Search, User, Heart } from 'lucide-react';
+import { useStore } from '@/context/StoreContext';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { getFavoritesCount, getCartItemsCount } = useStore();
 
     return (
         <nav className="bg-white shadow-md">
@@ -34,23 +35,28 @@ const Navbar = () => {
 
                     {/* Desktop Right Icons */}
                     <div className="hidden md:flex items-center space-x-4">
-                        <button className="p-2 hover:bg-orange-50 rounded-full">
-                            <User className="h-5 w-5 text-gray-600" />
-                        </button>
+                        <Link href="/profile">
+                            <button className="p-2 hover:bg-orange-50 rounded-full">
+                                <User className="h-5 w-5 text-gray-600" />
+                            </button>
+                        </Link>
+
                         <Link href="/favorites">
                             <button className="p-2 hover:bg-orange-50 rounded-full relative">
                                 <Heart className="h-5 w-5 text-gray-600" />
                                 <span className="absolute top-0 right-0 h-4 w-4 bg-orange-500 rounded-full text-xs text-white flex items-center justify-center">
-                                    0
+                                    {getFavoritesCount()}
                                 </span>
                             </button>
                         </Link>
-                        <button className="p-2 hover:bg-orange-50 rounded-full relative">
-                            <ShoppingCart className="h-5 w-5 text-gray-600" />
-                            <span className="absolute top-0 right-0 h-4 w-4 bg-orange-500 rounded-full text-xs text-white flex items-center justify-center">
-                                0
-                            </span>
-                        </button>
+                        <Link href="/cart">
+                            <button className="p-2 hover:bg-orange-50 rounded-full relative">
+                                <ShoppingCart className="h-5 w-5 text-gray-600" />
+                                <span className="absolute top-0 right-0 h-4 w-4 bg-orange-500 rounded-full text-xs text-white flex items-center justify-center">
+                                    {getCartItemsCount()}
+                                </span>
+                            </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
