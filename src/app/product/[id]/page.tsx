@@ -1,17 +1,19 @@
 'use client'
+
 import { useStore } from '@/context/StoreContext';
 import { Heart, ShoppingCart, Star, StarHalf, MessageCircle, MessageSquare } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 import Product from '@/types/product';
 
-interface ProductDetailParams {
+interface PageProps {
     params: {
         id: string;
     };
+    searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const ProductDetailPage = ({ params }: ProductDetailParams) => {
+const ProductDetailPage = ({ params, searchParams }: PageProps) => {
     const {
         products,
         favoriteProducts,
@@ -30,6 +32,7 @@ const ProductDetailPage = ({ params }: ProductDetailParams) => {
         setIsLoading(false);
     }, [params.id, products]);
 
+    // Rest of your component code remains the same...
     const renderStars = (rating: number) => {
         const stars = [];
         const fullStars = Math.floor(rating);
