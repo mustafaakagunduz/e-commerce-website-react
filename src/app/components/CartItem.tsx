@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import type CartItem from '@/types/cart';
+import Link from 'next/link';
 
 interface CartItemProps {
     item: CartItem;
@@ -12,18 +13,22 @@ export const CartItem = ({ item, onRemove, onUpdateQuantity }: CartItemProps) =>
     return (
         <Card className="flex flex-col md:flex-row gap-4 p-4">
             <div className="relative w-full md:w-48 h-48">
-                <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover rounded-md"
-                />
+                <Link href={`/product/${item.id}`} className="relative w-full md:w-48 h-48">
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover rounded-md"
+                    />
+                </Link>
             </div>
             <div className="flex-1 flex flex-col justify-between">
                 <div>
                     <div className="text-sm text-gray-500">{item.brand}</div>
-                    <h3 className="font-medium text-gray-800 mb-1">
-                        {item.name}
-                    </h3>
+                    <Link href={`/product/${item.id}`} className="relative w-full md:w-48 h-48">
+                        <h3 className="font-medium text-gray-800 mb-1 hover:text-orange-500 transition-colors">
+                            {item.name}
+                        </h3>
+                    </Link>
                     <div className="text-sm text-gray-500 mb-4">{item.category}</div>
                 </div>
 

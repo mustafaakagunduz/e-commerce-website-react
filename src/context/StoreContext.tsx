@@ -1,9 +1,10 @@
 'use client'
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import Product from '@/types/product';
 import CartItem from '@/types/cart';
 
 interface StoreContextType {
+    products: Product[];
     favoriteProducts: Product[];
     cartItems: CartItem[];
     addToFavorites: (product: Product) => void;
@@ -13,10 +14,11 @@ interface StoreContextType {
     updateCartQuantity: (id: number, quantity: number) => void;
     getFavoritesCount: () => number;
     getCartItemsCount: () => number;
+    getProductById: (id: number) => Product | undefined;
 }
 
-// Başlangıç verileri
-const initialFavorites = [
+// Tüm ürünlerin listesi
+const initialProducts = [
     {
         id: 1,
         name: "Oversized Pamuklu T-shirt",
@@ -54,7 +56,7 @@ const initialFavorites = [
         name: "Uzun Kollu Gömlek",
         price: "329.90",
         image: "/images/gomlek.jpg",
-        category: "Kadın Giyim",
+        category: "Erkek Giyim",
         brand: "Classic Wear"
     },
     {
@@ -67,23 +69,17 @@ const initialFavorites = [
     }
 ];
 
+// İlk 3 ürünü favorilere ekleyelim
+const initialFavoriteProducts = initialProducts.slice(0, 6);
+
+// İlk 2 ürünü sepete ekleyelim
 const initialCartItems = [
     {
-        id: 1,
-        name: "Oversized Pamuklu T-shirt",
-        price: "199.90",
-        image: "/images/tisort.jpg",
-        category: "Kadın Giyim",
-        brand: "Urban Style",
+        ...initialProducts[0],
         quantity: 2
     },
     {
-        id: 2,
-        name: "Yüksek Bel Jean Pantolon",
-        price: "459.90",
-        image: "/images/jean.jpg",
-        category: "Kadın Giyim",
-        brand: "Denim Life",
+        ...initialProducts[1],
         quantity: 1
     }
 ];
@@ -91,8 +87,18 @@ const initialCartItems = [
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-    const [favoriteProducts, setFavoriteProducts] = useState<Product[]>(initialFavorites);
+    const [isClient, setIsClient] = useState(false);
+    const [products] = useState<Product[]>(initialProducts);
+    const [favoriteProducts, setFavoriteProducts] = useState<Product[]>(initialFavoriteProducts);
     const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return null; // veya loading göstergesi
+    }
 
     const addToFavorites = (product: Product) => {
         setFavoriteProducts(prev => [...prev, product]);
@@ -131,8 +137,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
     const getCartItemsCount = () => cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
+    const getProductById = (id: number) => {
+        return products.find(product => product.id === id);
+    };
+
     return (
         <StoreContext.Provider value={{
+            products,
             favoriteProducts,
             cartItems,
             addToFavorites,
@@ -141,7 +152,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             removeFromCart,
             updateCartQuantity,
             getFavoritesCount,
-            getCartItemsCount
+            getCartItemsCount,
+            getProductById
         }}>
             {children}
         </StoreContext.Provider>

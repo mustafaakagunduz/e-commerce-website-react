@@ -1,5 +1,6 @@
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Trash2 } from 'lucide-react';
+import Link from 'next/link';
 
 import Product from '@/types/product';
 
@@ -13,11 +14,13 @@ const ProductCard = ({ product, onRemove, onAddToCart }: ProductCardProps) => {
     return (
         <Card className="group">
             <div className="relative">
-                <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-96 object-cover"
-                />
+                <Link href={`/product/${product.id}`}>
+                    <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-96 object-cover"
+                    />
+                </Link>
                 <button
                     onClick={() => onRemove?.(product.id)}
                     className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-orange-50 transition-colors"
@@ -28,9 +31,11 @@ const ProductCard = ({ product, onRemove, onAddToCart }: ProductCardProps) => {
             </div>
             <CardContent className="p-4">
                 <div className="text-sm text-gray-500 mb-1">{product.brand}</div>
-                <h3 className="font-medium text-gray-800 mb-1 line-clamp-1">
-                    {product.name}
-                </h3>
+                <Link href={`/product/${product.id}`}>
+                    <h3 className="font-medium text-gray-800 mb-1 line-clamp-1 hover:text-orange-500 transition-colors">
+                        {product.name}
+                    </h3>
+                </Link>
                 <div className="text-sm text-gray-500 mb-2">{product.category}</div>
             </CardContent>
             <CardFooter className="p-4 pt-0 flex justify-between items-center">
