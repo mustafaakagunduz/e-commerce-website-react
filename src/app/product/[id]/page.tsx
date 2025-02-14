@@ -15,6 +15,8 @@ interface PageProps {
 
 const ProductDetailPage = ({ params, searchParams }: PageProps) => {
     const resolvedParams = use(params);
+    const resolvedSearchParams = use(searchParams);
+    
     const {
         products,
         favoriteProducts,
