@@ -25,7 +25,45 @@ const initialProducts = [
         price: "199.90",
         image: "/images/tisort.jpg",
         category: "Kadın Giyim",
-        brand: "Urban Style"
+        brand: "Urban Style",
+        rating: 4.5,
+        reviewCount: 128,
+        questions: [
+            {
+                id: 1,
+                userId: "user1",
+                userName: "Ayşe K.",
+                question: "Bu ürün yıkamada çekme yapar mı?",
+                answer: "Soğuk suda yıkandığında herhangi bir çekme yapmaz.",
+                date: "2024-02-10"
+            },
+            {
+                id: 2,
+                userName: "Zeynep M.",
+                userId: "user2",
+                question: "S beden ölçüleri nedir?",
+                answer: "S beden: Göğüs 98cm, Boy 68cm",
+                date: "2024-02-08"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user3",
+                userName: "Mehmet A.",
+                rating: 5,
+                comment: "Kaliteli kumaş, rahat bir ürün. Tam beklediğim gibi.",
+                date: "2024-02-12"
+            },
+            {
+                id: 2,
+                userId: "user4",
+                userName: "Elif Y.",
+                rating: 4,
+                comment: "Güzel ürün fakat biraz bol kalıyor, bir beden küçük alınabilir.",
+                date: "2024-02-01"
+            }
+        ]
     },
     {
         id: 2,
@@ -33,7 +71,45 @@ const initialProducts = [
         price: "459.90",
         image: "/images/jean.jpg",
         category: "Kadın Giyim",
-        brand: "Denim Life"
+        brand: "Denim Life",
+        rating: 4.8,
+        reviewCount: 256,
+        questions: [
+            {
+                id: 1,
+                userId: "user5",
+                userName: "Selin B.",
+                question: "34 beden stoka gelecek mi?",
+                answer: "Önümüzdeki hafta 34 beden stoklarımız yenilenecek.",
+                date: "2024-02-05"
+            },
+            {
+                id: 2,
+                userId: "user6",
+                userName: "Merve D.",
+                question: "Kumaşı esniyor mu?",
+                answer: "Evet, %2 elastan içeriyor ve rahatlıkla esneme sağlıyor.",
+                date: "2024-01-28"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user7",
+                userName: "Büşra K.",
+                rating: 5,
+                comment: "Tam kalıp, çok rahat. Günlük kullanım için ideal.",
+                date: "2024-02-15"
+            },
+            {
+                id: 2,
+                userId: "user8",
+                userName: "Cansu M.",
+                rating: 5,
+                comment: "Kaliteli bir ürün, kesinlikle tavsiye ederim.",
+                date: "2024-02-10"
+            }
+        ]
     },
     {
         id: 3,
@@ -41,7 +117,37 @@ const initialProducts = [
         price: "899.90",
         image: "/images/ayakkabi.jpg",
         category: "Ayakkabı",
-        brand: "SportMax"
+        brand: "SportMax",
+        rating: 4.2,
+        reviewCount: 89,
+        questions: [
+            {
+                id: 1,
+                userId: "user9",
+                userName: "Ali R.",
+                question: "Numarası normal mi yoksa küçük mü kalıyor?",
+                answer: "Normal kalıp, kendi numaranızı alabilirsiniz.",
+                date: "2024-02-01"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user10",
+                userName: "Emre S.",
+                rating: 4,
+                comment: "Çok rahat, günlük kullanım için ideal. Tek eksisi biraz ağır.",
+                date: "2024-02-08"
+            },
+            {
+                id: 2,
+                userId: "user11",
+                userName: "Kaan Y.",
+                rating: 5,
+                comment: "Uzun süre kullanımda bile ayak yormuyor.",
+                date: "2024-01-25"
+            }
+        ]
     },
     {
         id: 4,
@@ -49,7 +155,37 @@ const initialProducts = [
         price: "559.90",
         image: "/images/canta.jpg",
         category: "Aksesuar",
-        brand: "Leather Co"
+        brand: "Leather Co",
+        rating: 4.6,
+        reviewCount: 167,
+        questions: [
+            {
+                id: 1,
+                userId: "user12",
+                userName: "Deniz A.",
+                question: "Laptop sığıyor mu?",
+                answer: "13 inç laptop rahatlıkla sığıyor.",
+                date: "2024-02-03"
+            },
+            {
+                id: 2,
+                userId: "user13",
+                userName: "İrem K.",
+                question: "Su geçiriyor mu?",
+                answer: "Özel su geçirmez kaplama yapılmıştır.",
+                date: "2024-01-30"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user14",
+                userName: "Sevgi B.",
+                rating: 5,
+                comment: "Deri kalitesi çok iyi, dikişleri sağlam.",
+                date: "2024-02-14"
+            }
+        ]
     },
     {
         id: 5,
@@ -57,7 +193,37 @@ const initialProducts = [
         price: "329.90",
         image: "/images/gomlek.jpg",
         category: "Erkek Giyim",
-        brand: "Classic Wear"
+        brand: "Classic Wear",
+        rating: 4.3,
+        reviewCount: 142,
+        questions: [
+            {
+                id: 1,
+                userId: "user15",
+                userName: "Burak Ç.",
+                question: "Ütü gerektirir mi?",
+                answer: "Hafif ütü gerektiren bir kumaşı var.",
+                date: "2024-02-07"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user16",
+                userName: "Murat K.",
+                rating: 4,
+                comment: "İş için ideal, kumaşı kaliteli.",
+                date: "2024-02-11"
+            },
+            {
+                id: 2,
+                userId: "user17",
+                userName: "Serkan T.",
+                rating: 5,
+                comment: "Tam kalıp, rahatsız etmiyor.",
+                date: "2024-02-05"
+            }
+        ]
     },
     {
         id: 6,
@@ -65,7 +231,45 @@ const initialProducts = [
         price: "679.90",
         image: "/images/elbise.jpg",
         category: "Kadın Giyim",
-        brand: "Elegant"
+        brand: "Elegant",
+        rating: 4.7,
+        reviewCount: 198,
+        questions: [
+            {
+                id: 1,
+                userId: "user18",
+                userName: "Gizem Y.",
+                question: "Kumaşı kalın mı?",
+                answer: "Orta kalınlıkta, 4 mevsim giyilebilir.",
+                date: "2024-02-09"
+            },
+            {
+                id: 2,
+                userId: "user19",
+                userName: "Pınar S.",
+                question: "38 beden ölçüleri nedir?",
+                answer: "38 beden: Göğüs 88cm, Bel 70cm, Boy 110cm",
+                date: "2024-02-02"
+            }
+        ],
+        reviews: [
+            {
+                id: 1,
+                userId: "user20",
+                userName: "Yasemin K.",
+                rating: 5,
+                comment: "Harika bir elbise, kumaşı çok şık duruyor.",
+                date: "2024-02-13"
+            },
+            {
+                id: 2,
+                userId: "user21",
+                userName: "Aslı M.",
+                rating: 4,
+                comment: "Kalıbı güzel ama biraz uzun geldi.",
+                date: "2024-02-06"
+            }
+        ]
     }
 ];
 
