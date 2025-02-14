@@ -28,6 +28,7 @@ const initialProducts = [
         brand: "Urban Style",
         rating: 4.5,
         reviewCount: 128,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,
@@ -74,6 +75,7 @@ const initialProducts = [
         brand: "Denim Life",
         rating: 4.8,
         reviewCount: 256,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,
@@ -120,6 +122,7 @@ const initialProducts = [
         brand: "SportMax",
         rating: 4.2,
         reviewCount: 89,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,
@@ -158,6 +161,7 @@ const initialProducts = [
         brand: "Leather Co",
         rating: 4.6,
         reviewCount: 167,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,
@@ -196,6 +200,7 @@ const initialProducts = [
         brand: "Classic Wear",
         rating: 4.3,
         reviewCount: 142,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,
@@ -234,6 +239,7 @@ const initialProducts = [
         brand: "Elegant",
         rating: 4.7,
         reviewCount: 198,
+        description: "Description of the product........",
         questions: [
             {
                 id: 1,

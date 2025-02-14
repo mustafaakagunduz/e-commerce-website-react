@@ -5,6 +5,7 @@ import { Heart, ShoppingCart, Star, StarHalf, MessageCircle, MessageSquare } fro
 import { Card } from '@/components/ui/card';
 import { useEffect, useState, use } from 'react';
 import Product from '@/types/product';
+import ProductInteractions from '@/app/components/ProductInteractions';
 
 interface PageProps {
     params: Promise<{
@@ -16,7 +17,7 @@ interface PageProps {
 const ProductDetailPage = ({ params, searchParams }: PageProps) => {
     const resolvedParams = use(params);
     const resolvedSearchParams = use(searchParams);
-    
+
     const {
         products,
         favoriteProducts,
@@ -150,8 +151,7 @@ const ProductDetailPage = ({ params, searchParams }: PageProps) => {
                     <div className="pt-6 border-t">
                         <h2 className="text-xl font-semibold mb-4">Ürün Açıklaması</h2>
                         <p className="text-gray-600 leading-relaxed">
-                            Bu kısma ürün açıklaması eklenebilir. Şu an için dummy veriler
-                            kullandığımızdan içerik eklenmedi.
+                            {product.description || 'Bu kısma ürün açıklaması eklenebilir. Şu an için dummy veriler kullandığımızdan içerik eklenmedi.'}
                         </p>
                     </div>
                 </Card>
@@ -175,64 +175,14 @@ const ProductDetailPage = ({ params, searchParams }: PageProps) => {
                     </div>
                 </Card>
 
-                {/* Orta Kısım - Soru & Cevaplar */}
-                <Card className="p-6 lg:col-span-1">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-semibold">Soru & Cevap</h2>
-                        <button className="flex items-center gap-2 px-4 py-2 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition-colors">
-                            <MessageCircle className="w-5 h-5" />
-                            Soru Sor
-                        </button>
-                    </div>
-
-                    <div className="space-y-6">
-                        {product.questions.map((question) => (
-                            <div key={question.id} className="border-b last:border-b-0 pb-4">
-                                <div className="flex items-start gap-4 mb-3">
-                                    <MessageSquare className="w-5 h-5 text-gray-400 mt-1 shrink-0" />
-                                    <div className="flex-1">
-                                        <p className="font-medium text-gray-800">{question.question}</p>
-                                        <p className="text-sm text-gray-500 mt-1">
-                                            {question.userName} - {question.date}
-                                        </p>
-                                    </div>
-                                </div>
-                                {question.answer && (
-                                    <div className="ml-9 pl-4 border-l-2 border-orange-200">
-                                        <p className="text-gray-700">{question.answer}</p>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </Card>
-
-                {/* Sağ Kısım - Yorumlar */}
-                <Card className="p-6 lg:col-span-1">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-xl font-semibold">Yorumlar</h2>
-                        <button className="flex items-center gap-2 px-4 py-2 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition-colors">
-                            Yorum Yap
-                        </button>
-                    </div>
-
-                    <div className="space-y-6">
-                        {product.reviews.map((review) => (
-                            <div key={review.id} className="border-b last:border-b-0 pb-4">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <div className="flex items-center">
-                                        {renderStars(review.rating)}
-                                    </div>
-                                    <span className="text-sm text-gray-500">
-                                        {review.date}
-                                    </span>
-                                </div>
-                                <p className="font-medium text-gray-800 mb-1">{review.userName}</p>
-                                <p className="text-gray-600">{review.comment}</p>
-                            </div>
-                        ))}
-                    </div>
-                </Card>
+                {/* Yorum ve Soru-Cevap Bölümü */}
+                <div className="lg:col-span-2">
+                    <ProductInteractions
+                        productId={product.id}
+                        initialReviews={product.reviews}
+                        initialQuestions={product.questions}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -28,6 +28,7 @@ interface Product {
     reviewCount: number;
     questions: ProductQuestion[];
     reviews: ProductReview[];
+    description: string;
 }
 
 export default Product;
